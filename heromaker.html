@@ -12,11 +12,16 @@
     <!--Bootstrp -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+
   </head>
   <body>
-    <!-- html forms -->
+    <!-- html forms for login actins -->
     <div class="container" id="login-form">
       <div class="card card-body bg-light">
+        <h3>Plz sign in or create a new account</h3>
 
       <form>
   <div class="form-group">
@@ -31,10 +36,77 @@
   <button type="button" id="sign-in-button" class="btn btn-primary btn-block">Sign in</button>
   <button type="button" id="create-newuser-button" class="btn btn-warning btn-block">Create New Account</button>
   <button type="button" id="google-login-button" class="btn btn-primary btn-block">Sign in with Google</button>
+
 </form>
 
     </div>
     </div>
+
+<!-- add hero forms -->
+<div class="container" id="add-hero">
+  <div class="card card-body bg-light">
+    <h3>Create A New Hero</h3>
+
+  <form>
+<div class="form-group">
+<label for="inputHeroName">Hero Name</label>
+<input type="text" class="form-control" id="inputHeroName" placeholder="Hero Name">
+</div>
+<div class="form-group">
+  <label for="hero-race">Hero Race</label>
+  <select class="form-control" id="hero-race">
+  <option value="Wizard">Wizard</option>
+  <option value="Ork">Ork</option>
+  <option value="Elf">Elf</option>
+  <option value="Halfing">Halfing</option>
+  <option value="Cyclopes">Cyclopes</option>
+  <option value="Human">Human</option>
+</select>
+</div>
+
+
+
+<div class="form-group">
+  <label for="hero-profession">Hero Profession</label>
+  <select class="form-control" id="hero-profession">
+  <option value="Armorer">Armorer</option>
+  <option value="Cobbler">Cobbler</option>
+  <option value="Cooper">Cooper</option>
+  <option value="Falconer">Falconer</option>
+  <option value="Ferreter">Ferreter</option>
+  <option value="Forger">Forger</option>
+  <option value="Haberdasher">Haberdasher</option>
+  <option value="Plowman">Plowman</option>
+  <option value="Stone Mason">Stone Mason</option>
+  <option value="Tailer">Tailer</option>
+</select>
+</div>
+
+<div class="form-group">
+  <label for="hero-strength">Hero Strength: <span class="attrib-value">50</span></label><br>
+<input type="range" min="1" max="100" value="50" id="hero-strength" name="hero-strength">
+</div>
+<div class="form-group">
+  <label for="hero-speed">Hero Speed: <span class="attrib-value">50</span></label><br>
+<input type="range" min="1" max="100" value="50" id="hero-speed" name="hero-speed">
+</div>
+
+<div class="form-group">
+  <label for="hero-stamina">Hero Stamina: <span class="attrib-value">50</span></label><br>
+<input type="range" min="1" max="100" value="50" id="hero-stamina" name="hero-stamina">
+</div>
+
+<div class="checkbox">
+   <label>
+     <input id="is-diety" type="checkbox"> Is Diety
+   </label>
+ </div>
+</div>
+
+<button type="button" id="create-newhero-button" class="btn btn-primary btn-block">Create New Hero</button>
+
+</form>
+</div>
 
 
 
