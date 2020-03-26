@@ -111,14 +111,53 @@
 
 
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/7.12.0/firebase-app.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/7.12.0/firebase-analytics.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+ https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
 
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+apiKey: "AIzaSyBwtrwbHXw3cNLbUOxhcB4gZ3bZFvYe5tI",
+authDomain: "heromaker-19186.firebaseapp.com",
+databaseURL: "https://heromaker-19186.firebaseio.com",
+projectId: "heromaker-19186",
+storageBucket: "heromaker-19186.appspot.com",
+messagingSenderId: "347659620283",
+appId: "1:347659620283:web:2cd4539b392e8532d03e9e",
+measurementId: "G-Z4TTWVBZQZ"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+
+<script>
+$("#create-newuser-button").click(function(){
+  var email = $("#inputEmail").val();
+  var password = $("#inputPassword").val();
+  console.log("New User"+ email + " " + password);
+  SignIn(email,password);
+});
+
+//button listerners
+
+
+function SignIn(email, password) {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+  });email-password.html
+}
+
+
+</script>
   </body>
 </html>
