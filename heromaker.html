@@ -138,6 +138,9 @@ firebase.analytics();
 <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
 
 <script>
+var currentUser={}
+
+
 $("#create-newuser-button").click(function(){
   var email = $("#inputEmail").val();
   var password = $("#inputPassword").val();
@@ -156,6 +159,21 @@ function SignIn(email, password) {
   // ...
   });email-password.html
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+
+    var email = user.email;
+    currentUser = user;
+    console.log(currentUser.email+ " has logged in");
+
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+  }
+});
 
 
 </script>
