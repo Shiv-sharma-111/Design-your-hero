@@ -23,9 +23,6 @@
     <!-- Edit Models -->
     <!-- Button trigger modal -->
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editHero">
-  Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="editHero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -321,6 +318,46 @@ $(document).on("click", ".delete-hero", function(){
   firebase.database().ref("users/" + currentUser.uid + "/heroes/" + heroID + "/diety").remove();
 });
 
+
+
+
+
+$(document).on("click", ".edit-hero-button", function(){
+  //console.log("clicked");
+  var heroname = $(this).parent().find(".hero-data-name").text();
+  $("#edit-inputHeroName").val(heroname);
+
+  var herorace = $(this).parent().find(".hero-data-race").text();
+  $("#edit-hero-race").val(herorace).change();
+
+  var heroprofession = $(this).parent().find(".hero-data-profession").text();
+  $("#edit-hero-profession").val(heroprofession).change();
+
+  var strength = $(this).parent().find(".hero-data-strength").text();
+  $("#edit-hero-strength").val(strength).change();
+  console.log("strength = "+ strength);
+
+  var speed = $(this).parent().find(".hero-data-speed").text();
+  $("#edit-hero-speed").val(speed).change();
+
+  var stamina = $(this).parent().find(".hero-data-stamina").text();
+  $("#edit-hero-stamina").val(stamina).change();
+
+  var isdiety = $(this).parent().find(".hero-data-diety").text();
+  console.log("is diety = "+ isdiety);
+  if(isdiety == "true") {
+    $("#edit-is-diety").attr("checked",true);
+    console.log("changed is true");
+  }
+  else{
+    $("#edit-is-diety").attr("checked", false);
+  }
+});
+
+
+
+
+
 $(".hero-sss").on("change input", function() {
   var currentvalue = $(this).val();
   $(this).parent().find("span").text(currentvalue);
@@ -378,15 +415,17 @@ heroReference.on("value", function(snapshot){
   snapshot.forEach(function(childsnapshot){
     var person = childsnapshot.val();
     heroHTMLitem += "<div class'heroHTMLitem'><hr><ul>";
-    heroHTMLitem += "<li>Name:<span>" +person.name+ "</span></li>";
-    heroHTMLitem += "<li>Race:<span>" +person.race+ "</span></li>";
-    heroHTMLitem += "<li>Profession:<span>" +person.profession+ "</span></li>";
-    heroHTMLitem += "<li>Strength:<span>" +person.strength+ "</span></li>";
-    heroHTMLitem += "<li>Speed:<span>" +person.speed+ "</span></li>";
-    heroHTMLitem += "<li>Stamina:<span>" +person.stamina+ "</span></li>";
-    heroHTMLitem += "<li>Diety:<span>" +person.diety+ "</span></li>";
-    heroHTMLitem += "</ul></div>"
+    heroHTMLitem += "<li>Name:<span class='hero-data-name'>" +person.name+ "</span></li>";
+    heroHTMLitem += "<li>Race:<span class='hero-data-race'>" +person.race+ "</span></li>";
+    heroHTMLitem += "<li>Profession:<span class='hero-data-profession'>" +person.profession+ "</span></li>";
+    heroHTMLitem += "<li>Strength:<span class='hero-data-strength'>" +person.strength+ "</span></li>";
+    heroHTMLitem += "<li>Speed:<span class='hero-data-speed'>" +person.speed+ "</span></li>";
+    heroHTMLitem += "<li>Stamina:<span class='hero-data-stamina'>" +person.stamina+ "</span></li>";
+    heroHTMLitem += "<li>Diety:<span class='hero-data-diety'>" +person.diety+ "</span></li>";
+    heroHTMLitem += "</ul>"
     heroHTMLitem += "<button type='button' class='btn btn-danger delete-hero' id='" + person.id + "'>Delete Me</button>";
+    heroHTMLitem += "<button type='button' class='btn btn-default  edit-hero-button' data-toggle='modal' data-target='#editHero'>Edit me</button>";
+    heroHTMLitem +="</div>"
   });
   $("#show-heroes").html(heroHTMLitem);
 });
