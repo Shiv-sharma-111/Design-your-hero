@@ -12,12 +12,111 @@
     <!--Bootstrp -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
 
 
 
 
   </head>
   <body>
+    <!-- Edit Models -->
+    <!-- Button trigger modal -->
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editHero">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editHero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit this hero</h4>
+      </div>
+      <div class="modal-body">
+        <!--this is copies code start here-->
+
+        <!-- add hero forms -->
+        <div class="container" id="add-hero">
+          <div class="card card-body bg-light">
+            <h3>Create A New Hero</h3>
+
+          <form>
+        <div class="form-group">
+        <label for="edit-inputHeroName">Hero Name</label>
+        <input type="text" class="form-control" id="edit-inputHeroName" placeholder="Hero Name">
+        </div>
+        <div class="form-group">
+          <label for="edit-hero-race">Hero Race</label>
+          <select class="form-control" id="edit-hero-race">
+          <option value="Wizard">Wizard</option>
+          <option value="Ork">Ork</option>
+          <option value="Elf">Elf</option>
+          <option value="Halfing">Halfing</option>
+          <option value="Cyclopes">Cyclopes</option>
+          <option value="Human">Human</option>
+        </select>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="edit-hero-profession">Hero Profession</label>
+          <select class="form-control" id="edit-hero-profession">
+          <option value="Armorer">Armorer</option>
+          <option value="Cobbler">Cobbler</option>
+          <option value="Cooper">Cooper</option>
+          <option value="Falconer">Falconer</option>
+          <option value="Ferreter">Ferreter</option>
+          <option value="Forger">Forger</option>
+          <option value="Haberdasher">Haberdasher</option>
+          <option value="Plowman">Plowman</option>
+          <option value="Stone Mason">Stone Mason</option>
+          <option value="Tailer">Tailer</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-hero-strength">Hero Strength: <span class="attrib-value">50</span></label><br>
+        <input class="form-control hero-sss" type="range" min="1" max="100" value="50" id="edit-hero-strength" name="hero-strength">
+        </div>
+        <div class="form-group">
+          <label for="edit-hero-speed">Hero Speed: <span class="attrib-value">50</span></label><br>
+        <input class="form-control hero-sss" type="range" min="1" max="100" value="50" id="edit-hero-speed" name="hero-speed">
+        </div>
+
+        <div class="form-group">
+          <label for="edit-hero-stamina">Hero Stamina: <span class="attrib-value">50</span></label><br>
+        <input class="form-control hero-sss" type="range" min="1" max="100" value="50" id="edit-hero-stamina" name="hero-stamina">
+        </div>
+
+        <div class="checkbox">
+           <label>
+             <input id="edit-is-diety" type="checkbox"> Is Diety
+           </label>
+         </div>
+        </div>
+
+        <button type="button" id="edit-newhero-button" class="btn btn-primary btn-block">Create New Hero</button>
+
+        </form>
+        </div>
+        <!--this is copied code end here -->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
     <!-- html forms for login actins -->
     <div class="container" id="login-form">
       <div class="card card-body bg-light">
@@ -99,16 +198,16 @@
 
 <div class="form-group">
   <label for="hero-strength">Hero Strength: <span class="attrib-value">50</span></label><br>
-<input type="range" min="1" max="100" value="50" id="hero-strength" name="hero-strength">
+<input class="form-control hero-sss" type="range" min="1" max="100" value="50" id="hero-strength" name="hero-strength">
 </div>
 <div class="form-group">
   <label for="hero-speed">Hero Speed: <span class="attrib-value">50</span></label><br>
-<input type="range" min="1" max="100" value="50" id="hero-speed" name="hero-speed">
+<input class="form-control hero-sss" type="range" min="1" max="100" value="50" id="hero-speed" name="hero-speed">
 </div>
 
 <div class="form-group">
   <label for="hero-stamina">Hero Stamina: <span class="attrib-value">50</span></label><br>
-<input type="range" min="1" max="100" value="50" id="hero-stamina" name="hero-stamina">
+<input class="form-control hero-sss" type="range" min="1" max="100" value="50" id="hero-stamina" name="hero-stamina">
 </div>
 
 <div class="checkbox">
@@ -159,6 +258,19 @@ var database = firebase.database();
 
 <script>
 var currentUser={}
+
+//tried something with models of bootstrap
+/*
+$(function(){
+$('#editHero').modal({
+   show:true,
+   backdrop:'static'
+});
+ //now on button click
+  $('#editHero').modal('show');
+});*/
+
+
 //button listerners
 
 $("#create-newuser-button").click(function(){
@@ -209,7 +321,10 @@ $(document).on("click", ".delete-hero", function(){
   firebase.database().ref("users/" + currentUser.uid + "/heroes/" + heroID + "/diety").remove();
 });
 
-
+$(".hero-sss").on("change input", function() {
+  var currentvalue = $(this).val();
+  $(this).parent().find("span").text(currentvalue);
+});
 
 function addHeroToDatabase(h)
 {
@@ -263,7 +378,7 @@ heroReference.on("value", function(snapshot){
   snapshot.forEach(function(childsnapshot){
     var person = childsnapshot.val();
     heroHTMLitem += "<div class'heroHTMLitem'><hr><ul>";
-    heroHTMLitem += "<li>Name:<span>" +person.item+ "</span></li>";
+    heroHTMLitem += "<li>Name:<span>" +person.name+ "</span></li>";
     heroHTMLitem += "<li>Race:<span>" +person.race+ "</span></li>";
     heroHTMLitem += "<li>Profession:<span>" +person.profession+ "</span></li>";
     heroHTMLitem += "<li>Strength:<span>" +person.strength+ "</span></li>";
