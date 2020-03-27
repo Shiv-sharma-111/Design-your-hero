@@ -49,6 +49,14 @@
   </div>
   <hr>
 
+
+
+  <!-- Shows hero here -->
+<div class="container" id="show-heroes">
+  <h1>Show hero here</h1>
+</div>
+
+
 <!-- add hero forms -->
 <div class="container" id="add-hero">
   <div class="card card-body bg-light">
@@ -233,6 +241,28 @@ firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error
   // ...
 });
 }
+
+
+
+var heroReference = firebase.database().ref().child("heroes");
+heroReference.on("value", function(snapshot){
+  $("#show-heroes").empty();
+  var heroHTMLitem = "<h3>here are all of the heroes I have in my database.</h3>";
+  snapshot.forEach(function(childsnapshot){
+    var person = childsnapshot.val();
+    heroHTMLitem += "<div class'heroHTMLitem'><hr><ul>";
+    heroHTMLitem += "<li>Name:<span>" +person.item+ "</span></li>";
+    heroHTMLitem += "<li>Race:<span>" +person.race+ "</span></li>";
+    heroHTMLitem += "<li>Profession:<span>" +person.profession+ "</span></li>";
+    heroHTMLitem += "<li>Strength:<span>" +person.strength+ "</span></li>";
+    heroHTMLitem += "<li>Speed:<span>" +person.speed+ "</span></li>";
+    heroHTMLitem += "<li>Stamina:<span>" +person.stamina+ "</span></li>";
+    heroHTMLitem += "<li>Diety:<span>" +person.diety+ "</span></li>";
+    heroHTMLitem += "</ul>"
+  });
+  $("#show-heroes").html(heroHTMLitem);
+});
+
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
