@@ -144,8 +144,8 @@ var database = firebase.database();
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script> <!--added 27/03 -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script> <!--added 27/03 -->
 
 
 
@@ -175,6 +175,31 @@ $("#logout-button").click(function(){
 });
 
 
+$("#create-newhero-button").click(function(){
+  var hero = {
+    id: $("#inputHeroName").val() + Date.now(),
+    owner: currentUser.uid,
+    name: $("#inputHeroName").val(),
+    race: $("#hero-race :selected").val(),
+    profession: $("#hero-profession :selected").val(),
+    strength: $("#hero-strength").val(),
+    speed: $("#hero-speed").val(),
+    stamina: $("#hero-stamina").val(),
+    diety: $("#is-diety").prop("checked")
+  }
+  addHeroToDatabase(hero);
+
+});
+
+function addHeroToDatabase(h)
+{
+  firebase.database().ref("heroes/" + h.id).set(h);
+  firebase.database().ref("users/" + currentUser.uid + "/heroes/" + h.id).set(h);
+
+}
+
+
+
 
 function CreateNewUser(email, password) {
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
@@ -186,6 +211,8 @@ function CreateNewUser(email, password) {
   // ...
   });
 }
+
+
 
 function writeUserData(user) {
   firebase.database().ref('users/' + user.uid).set({
