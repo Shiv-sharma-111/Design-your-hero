@@ -199,6 +199,18 @@ $("#create-newhero-button").click(function(){
 
 });
 
+
+$(document).on("click", ".delete-hero", function(){
+  console.log("clicked");
+  var heroID = $(this).attr('id');
+  console.log(heroID);
+  console.log(currentUser.uid);
+  firebase.database().ref("heroes/" + heroID).remove();
+  firebase.database().ref("users/" + currentUser.uid + "/heroes/" + heroID + "/diety").remove();
+});
+
+
+
 function addHeroToDatabase(h)
 {
   firebase.database().ref("heroes/" + h.id).set(h);
@@ -258,7 +270,8 @@ heroReference.on("value", function(snapshot){
     heroHTMLitem += "<li>Speed:<span>" +person.speed+ "</span></li>";
     heroHTMLitem += "<li>Stamina:<span>" +person.stamina+ "</span></li>";
     heroHTMLitem += "<li>Diety:<span>" +person.diety+ "</span></li>";
-    heroHTMLitem += "</ul>"
+    heroHTMLitem += "</ul></div>"
+    heroHTMLitem += "<button type='button' class='btn btn-danger delete-hero' id='" + person.id + "'>Delete Me</button>";
   });
   $("#show-heroes").html(heroHTMLitem);
 });
