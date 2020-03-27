@@ -38,9 +38,9 @@
         <!-- add hero forms -->
         <div class="container" id="add-hero">
           <div class="card card-body bg-light">
-            <h3>Create A New Hero</h3>
 
           <form>
+            <input type="hidden" class="form-control" id="heroid">
         <div class="form-group">
         <label for="edit-inputHeroName">Hero Name</label>
         <input type="text" class="form-control" id="edit-inputHeroName" placeholder="Hero Name">
@@ -96,7 +96,7 @@
          </div>
         </div>
 
-        <button type="button" id="edit-newhero-button" class="btn btn-primary btn-block">Create New Hero</button>
+        <button type="button" id="edit-newhero-button" data-dismiss="modal" class="btn btn-primary btn-block">Update this hero</button>
 
         </form>
         </div>
@@ -307,6 +307,30 @@ $("#create-newhero-button").click(function(){
   addHeroToDatabase(hero);
 
 });
+//edit new hero button-------------------------------------------------------------
+
+$("#edit-newhero-button").click(function(){
+  var hero = {
+    id: $("#heroid").val(),
+    owner: currentUser.uid,
+    name: $("#edit-inputHeroName").val(),
+    race: $("#edit-hero-race :selected").val(),
+    profession: $("#edit-hero-profession :selected").val(),
+    strength: $("#edit-hero-strength").val(),
+    speed: $("#edit-hero-speed").val(),
+    stamina: $("#edit-hero-stamina").val(),
+    diety: $("#edit-is-diety").prop("checked")
+  }
+  console.log("Upadte hero");
+  console.log(hero);
+  addHeroToDatabase(hero);
+
+});
+
+
+
+
+
 
 
 $(document).on("click", ".delete-hero", function(){
@@ -323,6 +347,12 @@ $(document).on("click", ".delete-hero", function(){
 
 
 $(document).on("click", ".edit-hero-button", function(){
+  var heroid = $(this).attr("data-heroid");
+  console.log("You clicked the edit button for " + heroid);
+  $("#heroid").val(heroid);
+
+
+
   //console.log("clicked");
   var heroname = $(this).parent().find(".hero-data-name").text();
   $("#edit-inputHeroName").val(heroname);
@@ -424,7 +454,7 @@ heroReference.on("value", function(snapshot){
     heroHTMLitem += "<li>Diety:<span class='hero-data-diety'>" +person.diety+ "</span></li>";
     heroHTMLitem += "</ul>"
     heroHTMLitem += "<button type='button' class='btn btn-danger delete-hero' id='" + person.id + "'>Delete Me</button>";
-    heroHTMLitem += "<button type='button' class='btn btn-default  edit-hero-button' data-toggle='modal' data-target='#editHero'>Edit me</button>";
+    heroHTMLitem += "<button type='button' class='btn btn-default  edit-hero-button' data-heroid='" + person.id + "' data-toggle='modal' data-target='#editHero'>Edit me</button>";
     heroHTMLitem +="</div>"
   });
   $("#show-heroes").html(heroHTMLitem);
